@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreatorPulse AI - Future-Proofing Creator Content</title>
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1a1d29;
+            --accent-color: #ff7700; /* शुद्ध भगवा / Saffron */
+            --accent-hover: #e06800; /* डार्क भगवा होवर */
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #2a2f42;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+
+        .api-section {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .api-section input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: #0f1117;
+            color: #fff;
+        }
+
+        .demo-badge {
+            background: #22c55e;
+            color: #000;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .input-section {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            background: #0f1117;
+            color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1rem;
+            resize: vertical;
+            margin-top: 10px;
+        }
+
+        textarea:focus, input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #ffaa55;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .output-box {
+            background: #0f1117;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            min-height: 150px;
+            white-space: pre-wrap;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: #0f1117;
+            color: #fff;
+        }
+
+        .loading {
+            color: var(--accent-color);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🔥 CreatorPulse AI</h1>
+            <p>Future-Proofing Creator Content & Membership Engagement</p>
+        </header>
+
+        <!-- API Key Input Section -->
+        <div class="api-section">
+            <label for="apiKey"><strong>Gemini API Key:</strong></label>
+            <input type="password" id="apiKey" placeholder="Optional: Enter Gemini API Key (Leave empty for Instant Demo Mode)">
+            <span class="demo-badge">⚡ DEMO READY</span>
+        </div>
+
+        <!-- Transcript Input Section -->
+        <div class="input-section">
+            <h2>📝 1. पेस्ट करें वीडियो या पॉडकास्ट Transcript</h2>
+            <textarea id="transcript" placeholder="Paste your creator content transcript here... (Or leave default demo transcript)">Welcome to this week's membership deep dive! Today we are discussing how creators can build sustainable subscription businesses. The key is member retention over acquisition. Always focus on providing weekly micro-value, engaging directly in Q&A sessions, and repurposing long-form live streams into actionable cheatsheets for members.</textarea>
+        </div>
+
+        <!-- Two Columns for Output -->
+        <div class="grid">
+            <!-- Repurposer Column -->
+            <div class="card">
+                <h2>🤖 AI Content Repurposer</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    एक क्लिक में Shorts/Reels स्क्रिप्ट, LinkedIn पोस्ट और Key Takeaways बनाएं।
+                </p>
+                <button onclick="repurposeContent()">Generate Creator Assets</button>
+                <div class="output-box" id="repurposeOutput">यहाँ ऑटो-जनरेटेड कंटेंट दिखेगा...</div>
+            </div>
+
+            <!-- Q&A Column -->
+            <div class="card">
+                <h2>🔍 Member Q&A & Video Search</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    कंटेंट से जुड़ा कोई भी सवाल पूछें (जैसे मेंबर्स पूछते हैं)।
+                </p>
+                <div class="search-box">
+                    <input type="text" id="userQuery" placeholder="जैसे: What is the main focus for creators?">
+                    <button onclick="searchTranscript()">Ask AI</button>
+                </div>
+                <div class="output-box" id="searchOutput">यहाँ AI का जवाब दिखेगा...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function callGemini(prompt) {
+            const apiKey = document.getElementById('apiKey').value.trim();
+
+            // DEMO MODE Response if API key is not provided
+            if (!apiKey) {
+                await new Promise(resolve => setTimeout(resolve, 1200)); // Simulate AI delay
+                return null; // Signals to use fallback demo data
+            }
+
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                const data = await response.json();
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+                return data.candidates[0].content.parts[0].text;
+            } catch (err) {
+                console.warn('API Call failed, falling back to Demo Mode:', err.message);
+                return null;
+            }
+        }
+
+        async function repurposeContent() {
+            const transcript = document.getElementById('transcript').value.trim();
+            const outputBox = document.getElementById('repurposeOutput');
+
+            if (!transcript) {
+                alert('कृपया पहले ट्रांसक्रिप्ट दर्ज करें!');
+                return;
+            }
+
+            outputBox.innerHTML = '<span class="loading">⏳ Processing content with AI...</span>';
+
+            const prompt = `
+                You are an expert content strategist for membership businesses.
+                Based on this transcript:
+                "${transcript}"
+                
+                Generate:
+                1. 🎬 A catchy 30-60 second Viral Reel/Short Script (with visual cues).
+                2. 💼 An engaging LinkedIn post tailored for community growth.
+                3. 💡 3 Bullet-point Key Takeaways for premium members.
+            `;
+
+            const result = await callGemini(prompt);
+            
+            if (result) {
+                outputBox.innerText = result;
+            } else {
+                // High-quality Mock Response for Demo
+                outputBox.innerText = `[⚡ DEMO MODE GENERATED OUTPUT]
+
+🎬 1. VIRAL REEL / SHORT SCRIPT
+[Visual: Speaker pointing at camera with text overlay "Stop Chasing New Subscribers!"]
+Audio: "The biggest mistake creator businesses make? Focusing 90% of their energy on getting NEW members instead of keeping existing ones happy."
+[Visual: Cut to diagram showing Retention vs Acquisition]
+Audio: "Focus on weekly micro-value and turn your live streams into quick cheatsheets. That’s how you double retention."
+
+💼 2. LINKEDIN COMMUNITY POST
+Sustainable creator businesses aren't built on viral spikes—they are built on member retention. 
+
+Here are 3 quick tweaks for your membership platform:
+• Deliver weekly micro-value instead of overwhelming content dumps.
+• Host interactive direct Q&As.
+• Repurpose every live stream into bite-sized actionable assets.
+
+What’s your #1 strategy for keeping members engaged? 👇
+
+💡 3. KEY TAKEAWAYS FOR PREMIUM MEMBERS
+• Retention > Acquisition for long-term creator revenue.
+• Repurpose existing video assets into actionable cheatsheets.
+• Direct Q&A engagement dramatically boosts member loyalty.`;
+            }
+        }
+
+        async function searchTranscript() {
+            const transcript = document.getElementById('transcript').value.trim();
+            const query = document.getElementById('userQuery').value.trim() || "What is the main strategy?";
+            const outputBox = document.getElementById('searchOutput');
+
+            if (!transcript) {
+                alert('कृपया ट्रांसक्रिप्ट भरें!');
+                return;
+            }
+
+            outputBox.innerHTML = '<span class="loading">🔍 Searching transcript...</span>';
+
+            const prompt = `
+                You are an AI assistant for a membership video platform.
+                Answer the user's question using ONLY the provided transcript.
+                
+                Transcript: "${transcript}"
+                User Question: "${query}"
+            `;
+
+            const result = await callGemini(prompt);
+
+            if (result) {
+                outputBox.innerText = result;
+            } else {
+                // High-quality Mock Search Response
+                outputBox.innerText = `[⚡ DEMO MODE ANSWER]
+
+Query: "${query}"
+
+Answer: According to the transcript, the main focus should be on **member retention over acquisition**. To achieve this, creators should provide weekly micro-value, participate directly in Q&A sessions, and repurpose live streams into actionable cheatsheets.`;
+            }
+        }
+    </script>
+</body>
+</html>
